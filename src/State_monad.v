@@ -166,8 +166,8 @@ let inline (>>$) = seqS
 
 Declare Scope state_monad.
 
-Notation "m >>$= f" := (bindS m f) (at level 50, left associativity) : state_monad.
-Notation "m >>$ n" := (seqS m n) (at level 50, left associativity) : state_monad.
+Notation "m >>$= f" := (bindS m f) (at level 58, left associativity) : state_monad.
+Notation "m >>$ n" := (seqS m n) (at level 58, left associativity) : state_monad.
 
 Open Scope state_monad.
 

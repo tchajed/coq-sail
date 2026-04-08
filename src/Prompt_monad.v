@@ -461,12 +461,12 @@ End EventTraces.
 
 End WithRegisterType.
 
-Notation "m >>= f" := (bind m f) (at level 50, left associativity).
-Notation "m >> n" := (bind0 m n) (at level 50, left associativity).
-Notation "m >>> n" := (bindH m n) (at level 50, left associativity).
+Notation "m >>= f" := (bind m f) (at level 58, left associativity).
+Notation "m >> n" := (bind0 m n) (at level 58, left associativity).
+Notation "m >>> n" := (bindH m n) (at level 58, left associativity).
 
-Notation "m >>$= f" := (pure_early_return_bind m f) (at level 50, left associativity).
-Notation "m >>$ n" := (m >>$= fun _ => n) (at level 50, left associativity).
+Notation "m >>$= f" := (pure_early_return_bind m f) (at level 58, left associativity).
+Notation "m >>$ n" := (m >>$= fun _ => n) (at level 58, left associativity).
 
 Arguments Done [_ _ _ _].
 Arguments Read_mem [_ _ _ _].
