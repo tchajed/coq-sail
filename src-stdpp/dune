@@ -31,7 +31,7 @@
    ConcurrencyInterfaceBuiltinsV2
    ConcurrencyInterfaceV2
  )
- (theories stdpp stdpp.bitvector)
+ (theories Stdlib stdpp stdpp.bitvector)
  (coqdoc_flags :standard --utf8
                --external https://plv.mpi-sws.org/coqdoc/stdpp/ stdpp
                --coqlib_url https://coq.inria.fr/doc/V8.20.1/stdlib
@@ -42,7 +42,7 @@
  (coq.theory
   (name SailStdpp.tests)
   (modules MachineWordTest)
-  (theories stdpp stdpp.bitvector SailStdpp)
+  (theories Stdlib stdpp stdpp.bitvector SailStdpp)
  )
  (rule (copy ../MachineWordTest.v MachineWordTest.v))
  (alias

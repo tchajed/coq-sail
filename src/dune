@@ -25,7 +25,7 @@
    Real
    Impl_base
  )
- (theories bbv)
+ (theories Stdlib bbv)
  (coqdoc_flags :standard --utf8
                --coqlib_url https://coq.inria.fr/doc/V8.20.1/stdlib
  )

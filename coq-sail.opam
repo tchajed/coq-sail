@@ -1,5 +1,4 @@
-# This file was originally created by dune, but has been altered to patch the
-# dune files so that it's compatible with some versions of Rocq 8 as well as 9.
+# This file was originally created by dune and has been manually edited.
 opam-version: "2.0"
 version: "0.20.1"
 synopsis:
@@ -38,7 +37,7 @@ doc: "https://github.com/rems-project/sail"
 bug-reports: "https://github.com/rems-project/coq-sail/issues"
 depends: [
   "dune" {>= "3.8"}
-  ("coq" {>= "8.16.0"} | "rocq-prover" {>= "9.0"})
+  "rocq-prover" {>= "9.0"}
   "coq-bbv" {>= "1.3"}
   "odoc" {with-doc}
 ]
@@ -47,8 +46,6 @@ conflicts: [
 ]
 build: [
   ["dune" "subst"] {dev}
-  ["sh" "-c" "sed 's/theories bbv/theories Stdlib bbv/' src/dune >src/dune.new"] {coq:version >= "9.0" | rocq-prover:installed}
-  ["mv" "src/dune.new" "src/dune"] {coq:version >= "9.0" | rocq-prover:installed}
   [
     "dune"
     "build"
