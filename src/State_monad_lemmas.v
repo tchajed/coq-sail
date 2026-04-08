@@ -79,6 +79,10 @@ From Coq Require Export Morphisms Equivalence.
 (* Ensure that pointwise equality on states is the preferred notion of
    equivalence for the state monad. *)
 Local Open Scope equiv_scope.
+(* stdpp sets [Hint Mode Equivalence - !] which prevents typeclass resolution
+   from finding [Equivalence ?R] when ?R is unconstrained, as it is when using
+   the === notation from equiv_scope. We relax the mode locally. *)
+#[local] Hint Mode Equivalence - - : typeclass_instances.
 #[export] Instance monadS_equivalence {Regs A E} :
   Equivalence (pointwise_relation (sequential_state Regs) (pointwise_relation ChoiceSource (@eq (list (result A E * sequential_state Regs * ChoiceSource))))) | 9.
 split; apply _.

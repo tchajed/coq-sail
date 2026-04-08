@@ -1026,6 +1026,7 @@ Qed.
 (* Setoid rewriting *)
 
 Local Open Scope equiv_scope.
+#[local] Hint Mode Equivalence - - : typeclass_instances.
 
 Add Parametric Morphism {Regs A Ety} : (@PrePost Regs A Ety)
   with signature eq ==> equiv ==> eq ==> iff

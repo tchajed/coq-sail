@@ -200,17 +200,13 @@ Proof.
 Defined.
 
 #[export] Instance Decidable_eq_sigT {T} {P : T -> Type} `{ET : EqDecision T} `{Peq : forall t, EqDecision (P t)} : EqDecision (sigT P).
-refine (fun '(@existT _ _ x p) '(@existT _ _ y q) =>
-          match decide (x = y) with
-          | left e => _
-          | right ne => right _
-          end).
-Proof.
+intros [x p] [y q].
+destruct (decide (x = y)) as [e|ne].
   - subst y.
-    refine (match Peq _ p q with left e' => left _ | right ne => right _ end).
-    * congruence.
-    * contradict ne. apply (Eqdep_dec.inj_pair2_eq_dec _ ET _ _ _ _ ne).
-  - contradict ne. apply (eq_sigT_fst ne).
+    destruct (Peq _ p q) as [e'|ne].
+    * left. congruence.
+    * right. contradict ne. apply (Eqdep_dec.inj_pair2_eq_dec _ ET _ _ _ _ ne).
+  - right. intros H. apply ne. exact (eq_sigT_fst H).
 Defined.
 
 #[export] Instance Countable_eq_sigT {T} {P : T -> Type} `{EqDecision T} `{forall t, EqDecision (P t)} `{CT : Countable T} `{CPt : forall t, Countable (P t)} : Countable (sigT P).

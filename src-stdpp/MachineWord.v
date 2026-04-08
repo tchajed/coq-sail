@@ -143,13 +143,9 @@ intros.
 specialize (bv_signed_in_range _ w ltac:(Lia.lia)).
 unfold bv_half_modulus, bv_modulus, word_to_Z.
 rewrite N2Z.inj_succ.
-rewrite Z.pow_succ_r; auto with zarith.
-
-replace (2 * 2 ^ Z.of_N n / 2)%Z with (2 ^ Z.of_N n)%Z. 2: {
-  rewrite Z.mul_comm.
-  rewrite Z.div_mul; auto.
-}
-trivial.
+rewrite Z.pow_succ_r; [|auto with zarith].
+rewrite Z.mul_comm, Z.div_mul by lia.
+lia.
 Qed.
 
 Definition ones n : word n := Z_to_bv _ (-1).

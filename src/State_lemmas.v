@@ -70,6 +70,7 @@ Require Import State_monad_lemmas.
 From Coq Require Import Lia.
 
 Local Open Scope equiv_scope.
+#[local] Hint Mode Equivalence - - : typeclass_instances.
 Local Open Scope Z.
 
 Lemma seqS_cong A RV E (m1 m1' : monadS RV unit E) (m2 m2' : monadS RV A E) :
