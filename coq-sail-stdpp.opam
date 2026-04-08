@@ -38,7 +38,7 @@ doc: "https://github.com/rems-project/sail"
 bug-reports: "https://github.com/rems-project/coq-sail/issues"
 depends: [
   "dune" {>= "3.8"}
-  "coq" {>= "8.18"}
+  ("coq" {>= "8.18"} | "rocq-prover" {>= "9.0"})
   "coq-stdpp-bitvector" {>= "1.10.0"}
   "odoc" {with-doc}
 ]
@@ -47,8 +47,8 @@ conflicts: [
 ]
 build: [
   ["dune" "subst"] {dev}
-  ["sh" "-c" "sed 's/theories stdpp/theories Stdlib stdpp/' src-stdpp/dune >src-stdpp/dune.new"] {coq:version >= "9.0"}
-  ["mv" "src-stdpp/dune.new" "src-stdpp/dune"] {coq:version >= "9.0"}
+  ["sh" "-c" "sed 's/theories stdpp/theories Stdlib stdpp/' src-stdpp/dune >src-stdpp/dune.new"] {coq:version >= "9.0" | rocq-prover:installed}
+  ["mv" "src-stdpp/dune.new" "src-stdpp/dune"] {coq:version >= "9.0" | rocq-prover:installed}
   [
     "dune"
     "build"
